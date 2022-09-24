@@ -1,15 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        Car ladaGrande = new Car("Lada","Grande",1.7,"Жёлтый",2015,
-                "Россия");
+        Car ladaGrande = new Car(null,null,1.7,"Жёлтый",2015,
+                null);
 
-        Car audiA850LTdiQuattro = new Car("Audi","A8 50 L TDI quattro",3.0,"Чёрный",
+        Car audiA850LTdiQuattro = new Car("Audi","A8 50 L TDI quattro",0,"Чёрный",
                 2020,"Германия");
 
-        Car bmwZ8 = new Car("BMW","Z8",3.0,"Чёрный",2021,
+        Car bmwZ8 = new Car("BMW","Z8",3.0,null,2021,
 
                 "Германия");
-        Car kiaSportage = new Car("Kia","4 поколение", 2.4,"Красный",2018,
+        Car kiaSportage = new Car("Kia","4 поколение", 2.4,"Красный",0,
                 "Южная Корея");
 
 
