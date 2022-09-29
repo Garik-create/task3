@@ -1,16 +1,74 @@
 package transport;
 
 public class Car {
-    private String brand;
-    private String model;
+    public static class Key {
+        private String remoteStart;
+        private String accessWithoutKey;
+
+        public Key(String remoteStart, String accessWithoutKey) {
+            if (remoteStart != null && !remoteStart.isEmpty() && !remoteStart.isBlank()) {
+                this.remoteStart = remoteStart;
+            } else {
+                System.out.println("Не указано");
+            }
+            if (accessWithoutKey != null && !accessWithoutKey.isEmpty() && !accessWithoutKey.isBlank()) {
+                this.accessWithoutKey = accessWithoutKey;
+            } else {
+                System.out.println("Не указано");
+            }
+        }
+
+
+        public String getRemoteStart() {
+            return remoteStart;
+        }
+
+        public void setRemoteStart(String remoteStart) {
+            this.remoteStart = remoteStart;
+        }
+
+        public String getAccessWithoutKey() {
+            return accessWithoutKey;
+        }
+
+        public void setAccessWithoutKey(String accessWithoutKey) {
+            this.accessWithoutKey = accessWithoutKey;
+        }
+    }
+
+    public static class Insurance {
+        private final int INSURANCE_TERMS;
+        private final int INSURANCE_COST;
+        private final int INSURANCE_NUMBER;
+
+        public Insurance(int insuranceTerms, int insuranceCost, int insuranceNumber) {
+            this.INSURANCE_TERMS = insuranceTerms;
+            this.INSURANCE_COST = insuranceCost;
+            this.INSURANCE_NUMBER = insuranceNumber;
+        }
+
+        public int getInsuranceTerms() {
+            return INSURANCE_TERMS;
+        }
+
+        public int getInsuranceCost() {
+            return INSURANCE_COST;
+        }
+
+        public int getInsuranceNumber() {
+            return INSURANCE_NUMBER;
+        }
+    }
+    private final String brand;
+    private final String model;
     public double engineVolume;
     public String color;
-    private int productionYear;
-    private String productionCountry;
+    private final int productionYear;
+    private final String productionCountry;
     public String speedBox;
-    private String carType;
+    private final String carType;
     public String number;
-    private int seatsAmount;
+    private final int seatsAmount;
     public String wheels;
 
 
