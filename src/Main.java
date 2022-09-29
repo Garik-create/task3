@@ -3,7 +3,7 @@ import transport.Car;
 public class Main {
     public static void main(String[] args) {
         Car ladaGrande = new Car(null, null, 1.7, "Жёлтый", 2015,
-                null, "Механика", "Седан", "е922ыв333", 4,
+                null, "Механика", "Седан", "е9e2ыв333", 4,
                 "Зима");
 
         Car audiA850LTdiQuattro = new Car("Audi", "A8 50 L TDI quattro", 0, "Чёрный",
@@ -25,28 +25,28 @@ public class Main {
                 15, "Лето");
 
 
-        ladaGrande.printData();
-        audiA850LTdiQuattro.printData();
-        bmwZ8.printData();
-        kiaSportage.printData();
-        hyundaiAvante.printData();
+        ladaGrande.printData(ladaGrande.getWheels());
+        audiA850LTdiQuattro.printData(audiA850LTdiQuattro.getWheels());
+        bmwZ8.printData(bmwZ8.getWheels());
+        kiaSportage.printData(kiaSportage.getWheels());
+        hyundaiAvante.printData(hyundaiAvante.getWheels());
         System.out.println();
         System.out.println();
 
 
-        int temperature = 7;
+        int temperature = 9;
 
-        ladaGrande.changeWheels(temperature, ladaGrande.wheels);
-        audiA850LTdiQuattro.changeWheels(temperature, audiA850LTdiQuattro.wheels);
-        bmwZ8.changeWheels(temperature, bmwZ8.wheels);
-        kiaSportage.changeWheels(temperature, kiaSportage.wheels);
-        hyundaiAvante.changeWheels(temperature, hyundaiAvante.wheels);
+        ladaGrande.changeWheels(temperature, ladaGrande.getWheels());
+        audiA850LTdiQuattro.changeWheels(temperature, audiA850LTdiQuattro.getWheels());
+        bmwZ8.changeWheels(temperature, bmwZ8.getWheels());
+        kiaSportage.changeWheels(temperature, kiaSportage.getWheels());
+        hyundaiAvante.changeWheels(temperature, hyundaiAvante.getWheels());
 
-        ladaGrande.isNumberTrue(ladaGrande.number);
-        audiA850LTdiQuattro.isNumberTrue(audiA850LTdiQuattro.number);
-        bmwZ8.isNumberTrue(bmwZ8.number);
-        kiaSportage.isNumberTrue(kiaSportage.number);
-        hyundaiAvante.isNumberTrue(hyundaiAvante.number);
+        ladaGrande.checkNumberTrue(ladaGrande.getNumber());
+        audiA850LTdiQuattro.checkNumberTrue(audiA850LTdiQuattro.getNumber());
+        bmwZ8.checkNumberTrue(bmwZ8.getNumber());
+        kiaSportage.checkNumberTrue(kiaSportage.getNumber());
+        hyundaiAvante.checkNumberTrue(hyundaiAvante.getNumber());
 
     }
 }
