@@ -6,12 +6,12 @@ public class Car {
         private String accessWithoutKey;
 
         public Key(String remoteStart, String accessWithoutKey) {
-            if (remoteStart != null && !remoteStart.isEmpty() && !remoteStart.isBlank()) {
+            if (remoteStart != null && !remoteStart.isBlank()) {
                 this.remoteStart = remoteStart;
             } else {
                 System.out.println("Не указано");
             }
-            if (accessWithoutKey != null && !accessWithoutKey.isEmpty() && !accessWithoutKey.isBlank()) {
+            if (accessWithoutKey != null && !accessWithoutKey.isBlank()) {
                 this.accessWithoutKey = accessWithoutKey;
             } else {
                 System.out.println("Не указано");
@@ -23,39 +23,48 @@ public class Car {
             return remoteStart;
         }
 
-        public void setRemoteStart(String remoteStart) {
-            this.remoteStart = remoteStart;
-        }
-
         public String getAccessWithoutKey() {
             return accessWithoutKey;
-        }
-
-        public void setAccessWithoutKey(String accessWithoutKey) {
-            this.accessWithoutKey = accessWithoutKey;
         }
     }
 
     public static class Insurance {
-        private final int INSURANCE_TERMS;
-        private final int INSURANCE_COST;
-        private final int INSURANCE_NUMBER;
+        private final Integer INSURANCE_TERMS;
+        private final Integer INSURANCE_COST;
+        private final String INSURANCE_NUMBER;
 
-        public Insurance(int insuranceTerms, int insuranceCost, int insuranceNumber) {
-            this.INSURANCE_TERMS = insuranceTerms;
-            this.INSURANCE_COST = insuranceCost;
-            this.INSURANCE_NUMBER = insuranceNumber;
+        public Insurance(Integer insuranceTerms, Integer insuranceCost, String insuranceNumber) {
+            if (insuranceTerms!=null && insuranceTerms !=0) {
+                this.INSURANCE_TERMS = insuranceTerms;
+            } else {
+                this.INSURANCE_TERMS = 1;
+            }
+            if (insuranceCost != null && insuranceCost != 0) {
+
+                this.INSURANCE_COST = insuranceCost;
+            } else {
+                this.INSURANCE_COST = 1;
+            }
+            if (insuranceNumber != null && !insuranceNumber.isBlank()) {
+                this.INSURANCE_NUMBER = insuranceNumber;
+            } else {
+                this.INSURANCE_NUMBER = "Введите номер полиса!";
+            }
         }
 
-        public int getInsuranceTerms() {
+        public void checkInsuranceTerms(Integer insuranceTerms) {
+
+        }
+
+        public Integer getInsuranceTerms() {
             return INSURANCE_TERMS;
         }
 
-        public int getInsuranceCost() {
+        public Integer getInsuranceCost() {
             return INSURANCE_COST;
         }
 
-        public int getInsuranceNumber() {
+        public String getInsuranceNumber() {
             return INSURANCE_NUMBER;
         }
     }
@@ -67,9 +76,9 @@ public class Car {
     private final String productionCountry;
     public String speedBox;
     private final String carType;
-    public String number;
+    private String number;
     private final int seatsAmount;
-    public String wheels;
+    private boolean wheels;
 
 
     public Car(String brand,
@@ -113,17 +122,17 @@ public class Car {
         } else {
             this.productionCountry = "default";
         }
-        if (speedBox != null && !speedBox.isBlank() && !speedBox.isEmpty()) {
+        if (speedBox != null && !speedBox.isBlank()) {
             this.speedBox = speedBox;
         } else {
             this.speedBox = "Механика";
         }
-        if (carType != null && !carType.isEmpty() && !carType.isBlank()) {
+        if (carType != null && !carType.isBlank()) {
             this.carType = carType;
         } else {
             this.carType = "Седан";
         }
-        if (number != null && !number.isBlank() && !number.isEmpty()) {
+        if (number != null && !number.isBlank()) {
             this.number = number;
         } else {
             this.number = "x000xx000";
@@ -133,10 +142,12 @@ public class Car {
         } else {
             this.seatsAmount = 0;
         }
-        if (wheels.equalsIgnoreCase("зима") || wheels.equalsIgnoreCase("лето")) {
-            this.wheels = wheels;
+        if (wheels.equalsIgnoreCase("зима")) {
+            this.wheels = true;
+        } else if (wheels.equalsIgnoreCase("лето")) {
+            this.wheels = false;
         } else {
-            this.wheels = "Не указано";
+        this.wheels = false;
         }
 
     }
@@ -170,7 +181,11 @@ public class Car {
     }
 
     public void setEngineVolume(double engineVolume) {
-        this.engineVolume = engineVolume;
+        if (engineVolume != 0) {
+            this.engineVolume = engineVolume;
+        } else {
+            this.engineVolume = 1.5;
+        }
     }
 
     public String getColor() {
@@ -178,7 +193,11 @@ public class Car {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        if (color != null) {
+            this.color = color;
+        } else {
+            this.color = "белый";
+        }
     }
 
     public String getSpeedBox() {
@@ -186,7 +205,11 @@ public class Car {
     }
 
     public void setSpeedBox(String speedBox) {
-        this.speedBox = speedBox;
+        if (speedBox != null && !speedBox.isBlank()) {
+            this.speedBox = speedBox;
+        } else {
+            this.speedBox = "Механика";
+        }
     }
 
     public String getNumber() {
@@ -194,34 +217,48 @@ public class Car {
     }
 
     public void setNumber(String number) {
-        this.number = number;
+        if (number != null && !number.isBlank()) {
+            this.number = number;
+        } else {
+            this.number = "x000xx000";
+        }
     }
 
-    public String getWheels() {
+    public boolean getWheels() {
         return wheels;
     }
 
-    public void setWheels(String wheels) {
-        this.wheels = wheels;
+    public void setWheels(boolean wheels) {
+        if (wheels) {
+            this.wheels = wheels;
+        }
     }
 
-    public void printData() {
-        System.out.printf("\n Автомобиль %s %s, объём двигателя %.1f литра, цвет %s, сборка %d, страна %s, коробка передач: %s, кузов: %s, номер: %s, количество мест: %d, резина: %s",
+    String wheels1;
+    public void printData(boolean wheels) {
+        if (wheels) {
+            wheels1 = "зимняя";
+        }
+        if (!wheels) {
+            wheels1 = "летняя";
+        }
+        System.out.printf("\n Автомобиль %s %s, объём двигателя %.1f литра, цвет %s, сборка %d, страна %s, коробка\n" +
+                        " передач: %s, кузов: %s, номер: %s, количество мест: %d, резина: %s\n",
                 brand, model, engineVolume, color, productionYear, productionCountry, speedBox,
-                carType, number, seatsAmount, wheels);
+                carType, number, seatsAmount, wheels1);
     }
 
-    public void changeWheels(int temperature, String wheels) {
-        if (temperature < 8 && this.wheels.equalsIgnoreCase("лето")) {
+    public void changeWheels(int temperature, boolean wheels) {
+        if (temperature < 8 && !wheels) {
             System.out.println("Смени резину на зимнюю!");
-        } else if (temperature >= 8 && this.wheels.equalsIgnoreCase("зима")) {
+        } else if (temperature >= 8 && wheels) {
             System.out.println("Смени резину на летнюю!");
         } else {
             System.out.println("Резину менять не надо.");
         }
     }
 
-    public void isNumberTrue(String number) {
+    public void checkNumberTrue(String number) {
         if (number.length() != 9 || number.charAt(0) < 1072 || number.charAt(0) > 1103) {
             System.out.println("\nНеверно указан номер");
             return;
