@@ -1,5 +1,7 @@
 package transport;
 
+import java.time.LocalDate;
+
 public class Car {
     public static class Key {
         private String remoteStart;
@@ -29,45 +31,54 @@ public class Car {
     }
 
     public static class Insurance {
-        private final Integer INSURANCE_TERMS;
-        private final Integer INSURANCE_COST;
-        private final String INSURANCE_NUMBER;
+        private final LocalDate insuranceTerms;
+        private final Integer insuranceCost;
+        private final String insuranceNumber;
 
-        public Insurance(Integer insuranceTerms, Integer insuranceCost, String insuranceNumber) {
-            if (insuranceTerms!=null && insuranceTerms !=0) {
-                this.INSURANCE_TERMS = insuranceTerms;
+        public void checkInsuranceTerms(LocalDate insuranceTerms) {
+            if (insuranceTerms.plusDays(365).isBefore(LocalDate.now())) {
+                System.out.println("Нужно срочно ехать оформлять страховку!");
+            }
+        }
+
+        public static void checkInsuranceNumber(String insuranceNumber) {
+            if (insuranceNumber.length() != 9) {
+                System.out.println("Номер страховки некорректный!");
+            }
+        }
+
+        public Insurance(LocalDate insuranceTerms, Integer insuranceCost, String insuranceNumber) {
+            if (insuranceTerms != null && !insuranceTerms.isAfter(LocalDate.now())) {
+                this.insuranceTerms = insuranceTerms;
             } else {
-                this.INSURANCE_TERMS = 1;
+                this.insuranceTerms = LocalDate.now();
             }
             if (insuranceCost != null && insuranceCost != 0) {
 
-                this.INSURANCE_COST = insuranceCost;
+                this.insuranceCost = insuranceCost;
             } else {
-                this.INSURANCE_COST = 1;
+                this.insuranceCost = 1;
             }
             if (insuranceNumber != null && !insuranceNumber.isBlank()) {
-                this.INSURANCE_NUMBER = insuranceNumber;
+                this.insuranceNumber = insuranceNumber;
             } else {
-                this.INSURANCE_NUMBER = "Введите номер полиса!";
+                this.insuranceNumber = "Введите номер полиса!";
             }
         }
 
-        public void checkInsuranceTerms(Integer insuranceTerms) {
-
-        }
-
-        public Integer getInsuranceTerms() {
-            return INSURANCE_TERMS;
+        public LocalDate getInsuranceTerms() {
+            return insuranceTerms;
         }
 
         public Integer getInsuranceCost() {
-            return INSURANCE_COST;
+            return insuranceCost;
         }
 
         public String getInsuranceNumber() {
-            return INSURANCE_NUMBER;
+            return insuranceNumber;
         }
     }
+
     private final String brand;
     private final String model;
     public double engineVolume;
@@ -80,6 +91,7 @@ public class Car {
     private final int seatsAmount;
     private boolean wheels;
 
+    private Insurance insurance;
 
     public Car(String brand,
                String model,
@@ -91,7 +103,8 @@ public class Car {
                String carType,
                String number,
                int seatsAmount,
-               String wheels) {
+               String wheels,
+               Insurance insurance) {
         if (brand != null) {
             this.brand = brand;
         } else {
@@ -102,16 +115,10 @@ public class Car {
         } else {
             this.model = "default";
         }
-        if (engineVolume != 0) {
-            this.engineVolume = engineVolume;
-        } else {
-            this.engineVolume = 1.5;
-        }
-        if (color != null) {
-            this.color = color;
-        } else {
-            this.color = "белый";
-        }
+        this.engineVolume = this.setEngineVolume(engineVolume);
+
+        this.color = this.setColor(color);
+
         if (productionYear != 0) {
             this.productionYear = productionYear;
         } else {
@@ -122,120 +129,27 @@ public class Car {
         } else {
             this.productionCountry = "default";
         }
-        if (speedBox != null && !speedBox.isBlank()) {
-            this.speedBox = speedBox;
-        } else {
-            this.speedBox = "Механика";
-        }
+        this.speedBox = this.setSpeedBox(speedBox);
+
         if (carType != null && !carType.isBlank()) {
             this.carType = carType;
         } else {
             this.carType = "Седан";
         }
-        if (number != null && !number.isBlank()) {
-            this.number = number;
-        } else {
-            this.number = "x000xx000";
-        }
+        this.number = this.setNumber(number);
+
         if (seatsAmount >= 1) {
             this.seatsAmount = seatsAmount;
         } else {
             this.seatsAmount = 0;
         }
-        if (wheels.equalsIgnoreCase("зима")) {
-            this.wheels = true;
-        } else if (wheels.equalsIgnoreCase("лето")) {
-            this.wheels = false;
-        } else {
-        this.wheels = false;
-        }
+        this.wheels = this.setWheels(wheels);
+        this.insurance = this.setInsurance(insurance);
 
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
-
-    public String getCarType() {
-        return carType;
-    }
-
-    public int getSeatsAmount() {
-        return seatsAmount;
-    }
-
-    public double getEngineVolume() {
-        return engineVolume;
-    }
-
-    public void setEngineVolume(double engineVolume) {
-        if (engineVolume != 0) {
-            this.engineVolume = engineVolume;
-        } else {
-            this.engineVolume = 1.5;
-        }
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        if (color != null) {
-            this.color = color;
-        } else {
-            this.color = "белый";
-        }
-    }
-
-    public String getSpeedBox() {
-        return speedBox;
-    }
-
-    public void setSpeedBox(String speedBox) {
-        if (speedBox != null && !speedBox.isBlank()) {
-            this.speedBox = speedBox;
-        } else {
-            this.speedBox = "Механика";
-        }
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        if (number != null && !number.isBlank()) {
-            this.number = number;
-        } else {
-            this.number = "x000xx000";
-        }
-    }
-
-    public boolean getWheels() {
-        return wheels;
-    }
-
-    public void setWheels(boolean wheels) {
-        if (wheels) {
-            this.wheels = wheels;
-        }
-    }
-
-    String wheels1;
     public void printData(boolean wheels) {
+        String wheels1 = "";
         if (wheels) {
             wheels1 = "зимняя";
         }
@@ -247,7 +161,6 @@ public class Car {
                 brand, model, engineVolume, color, productionYear, productionCountry, speedBox,
                 carType, number, seatsAmount, wheels1);
     }
-
     public void changeWheels(int temperature, boolean wheels) {
         if (temperature < 8 && !wheels) {
             System.out.println("Смени резину на зимнюю!");
@@ -282,4 +195,105 @@ public class Car {
             }
         }
     }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getProductionYear() {
+        return productionYear;
+    }
+
+    public String getProductionCountry() {
+        return productionCountry;
+    }
+
+    public String getCarType() {
+        return carType;
+    }
+
+    public int getSeatsAmount() {
+        return seatsAmount;
+    }
+
+    public double getEngineVolume() {
+        return engineVolume;
+    }
+
+    public double setEngineVolume(double engineVolume) {
+        if (engineVolume != 0) {
+            this.engineVolume = engineVolume;
+        } else {
+            this.engineVolume = 1.5;
+        }
+        return engineVolume;
+    }
+
+    public Insurance setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+        return this.insurance;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String setColor(String color) {
+        if (color != null) {
+            this.color = color;
+        } else {
+            this.color = "белый";
+        }
+        return color;
+    }
+
+    public String getSpeedBox() {
+        return speedBox;
+    }
+
+    public String setSpeedBox(String speedBox) {
+        if (speedBox != null && !speedBox.isBlank()) {
+            this.speedBox = speedBox;
+        } else {
+            this.speedBox = "Механика";
+        }
+        return speedBox;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String setNumber(String number) {
+        if (number != null && !number.isBlank()) {
+            this.number = number;
+        } else {
+            this.number = "x000xx000";
+        }
+        return number;
+    }
+
+    public boolean getWheels() {
+        return wheels;
+    }
+
+    public boolean setWheels(String wheels) {
+        if (wheels.equalsIgnoreCase("зима")) {
+            this.wheels = true;
+        } else if (wheels.equalsIgnoreCase("лето")) {
+            this.wheels = false;
+        } else {
+            this.wheels = false;
+        }
+        return this.wheels;
+    }
+
 }
