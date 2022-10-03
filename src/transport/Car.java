@@ -2,7 +2,7 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
+public class Car extends Transport {
     public static class Key {
         private String remoteStart;
         private String accessWithoutKey;
@@ -79,12 +79,7 @@ public class Car {
         }
     }
 
-    private final String brand;
-    private final String model;
     public double engineVolume;
-    public String color;
-    private final int productionYear;
-    private final String productionCountry;
     public String speedBox;
     private final String carType;
     private String number;
@@ -93,58 +88,29 @@ public class Car {
 
     private Insurance insurance;
 
-    public Car(String brand,
-               String model,
-               double engineVolume,
-               String color,
-               int productionYear,
-               String productionCountry,
-               String speedBox,
-               String carType,
-               String number,
-               int seatsAmount,
-               String wheels,
-               Insurance insurance) {
-        if (brand != null) {
-            this.brand = brand;
-        } else {
-            this.brand = "default";
-        }
-        if (model != null) {
-            this.model = model;
-        } else {
-            this.model = "default";
-        }
-        this.engineVolume = this.setEngineVolume(engineVolume);
+    public Car(String brand, String model, double engineVolume, String color, int productionYear,
+               String productionCountry, String speedBox, String carType, String number, int seatsAmount,
+               String wheels, Insurance insurance, Integer maxSpeed) {
+        super(brand, model, productionYear, productionCountry, color, maxSpeed);
 
-        this.color = this.setColor(color);
+        setEngineVolume(engineVolume);
 
-        if (productionYear != 0) {
-            this.productionYear = productionYear;
-        } else {
-            this.productionYear = 2000;
-        }
-        if (productionCountry != null) {
-            this.productionCountry = productionCountry;
-        } else {
-            this.productionCountry = "default";
-        }
-        this.speedBox = this.setSpeedBox(speedBox);
+        setSpeedBox(speedBox);
 
         if (carType != null && !carType.isBlank()) {
             this.carType = carType;
         } else {
             this.carType = "Седан";
         }
-        this.number = this.setNumber(number);
+        setNumber(number);
 
         if (seatsAmount >= 1) {
             this.seatsAmount = seatsAmount;
         } else {
             this.seatsAmount = 0;
         }
-        this.wheels = this.setWheels(wheels);
-        this.insurance = this.setInsurance(insurance);
+        setWheels(wheels);
+        setInsurance(insurance);
 
     }
 
@@ -156,11 +122,13 @@ public class Car {
         if (!wheels) {
             wheels1 = "летняя";
         }
-        System.out.printf("\n Автомобиль %s %s, объём двигателя %.1f литра, цвет %s, сборка %d, страна %s, коробка\n" +
-                        " передач: %s, кузов: %s, номер: %s, количество мест: %d, резина: %s\n",
-                brand, model, engineVolume, color, productionYear, productionCountry, speedBox,
-                carType, number, seatsAmount, wheels1);
+        System.out.printf("\n Автомобиль %s %s, объём двигателя %.1f литра, цвет %s, сборка %d, страна %s, коробка\n"
+                        + " передач: %s, кузов: %s, номер: %s, количество мест: %d, резина: %s, максимальная \n" +
+                        "скорость: %d км/час.\n", getBrand(), getModel(),
+                engineVolume, getColor(), getProductionYear(), getProductionCountry(), speedBox, carType, number,
+                seatsAmount, wheels1, getMaxSpeed());
     }
+
     public void changeWheels(int temperature, boolean wheels) {
         if (temperature < 8 && !wheels) {
             System.out.println("Смени резину на зимнюю!");
@@ -200,21 +168,6 @@ public class Car {
         return insurance;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
 
     public String getCarType() {
         return carType;
@@ -242,18 +195,6 @@ public class Car {
         return this.insurance;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public String setColor(String color) {
-        if (color != null) {
-            this.color = color;
-        } else {
-            this.color = "белый";
-        }
-        return color;
-    }
 
     public String getSpeedBox() {
         return speedBox;
