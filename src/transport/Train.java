@@ -17,14 +17,28 @@ public class Train extends Transport {
                  double trippDuration,
                  String departureStationName,
                  String arrivalStationName,
-                 Integer wagonsAmount) {
-        super(brand,model,productionYear, productionCountry,color,maxSpeed);
+                 Integer wagonsAmount,
+                 String fuel) {
+        super(brand, model, productionYear, productionCountry, color, maxSpeed, fuel);
 
         setTrippCost(trippCost);
         setTrippDuration(trippDuration);
         setDepartureStationName(departureStationName);
         setArrivalStationName(arrivalStationName);
         setWagonsAmount(wagonsAmount);
+    }
+
+    @Override
+    public void refill(String fuel) {
+
+        if (fuel.equals("diesel")) {
+            System.out.println("Заехать в депо, заправиться.");
+        }
+    }
+
+    @Override
+    public void printData2() {
+        System.out.printf("\nЛокомотив %s %s, используемое топливо %s.", getBrand(), getModel(), getFuel());
     }
 
     public void printTrain() {
@@ -39,7 +53,7 @@ public class Train extends Transport {
     }
 
     public void setTrippCost(Integer trippCost) {
-        if (trippCost!=null && trippCost>=0) {
+        if (trippCost != null && trippCost >= 0) {
             this.trippCost = trippCost;
         } else {
             this.trippCost = 0;
@@ -51,7 +65,7 @@ public class Train extends Transport {
     }
 
     public void setTrippDuration(double trippDuration) {
-        if (trippDuration>0) {
+        if (trippDuration > 0) {
             this.trippDuration = trippDuration;
         } else {
             this.trippDuration = 0;
@@ -63,7 +77,7 @@ public class Train extends Transport {
     }
 
     public void setDepartureStationName(String departureStationName) {
-        if (departureStationName !=null && !departureStationName.isBlank()) {
+        if (departureStationName != null && !departureStationName.isBlank()) {
             this.departureStationName = departureStationName;
         } else {
             this.departureStationName = "Введите название станции отправления!";
@@ -75,7 +89,7 @@ public class Train extends Transport {
     }
 
     public void setArrivalStationName(String arrivalStationName) {
-        if (arrivalStationName !=null && !arrivalStationName.isBlank()) {
+        if (arrivalStationName != null && !arrivalStationName.isBlank()) {
             this.arrivalStationName = arrivalStationName;
         } else {
             this.arrivalStationName = "Введите название станции прибытия!";
@@ -87,7 +101,7 @@ public class Train extends Transport {
     }
 
     public void setWagonsAmount(Integer wagonsAmount) {
-        if (wagonsAmount>0) {
+        if (wagonsAmount > 0) {
             this.wagonsAmount = wagonsAmount;
         } else {
             this.wagonsAmount = 0;

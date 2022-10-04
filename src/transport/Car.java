@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Car extends Transport {
     public static class Key {
+
         private String remoteStart;
         private String accessWithoutKey;
 
@@ -28,9 +29,11 @@ public class Car extends Transport {
         public String getAccessWithoutKey() {
             return accessWithoutKey;
         }
+
     }
 
     public static class Insurance {
+
         private final LocalDate insuranceTerms;
         private final Integer insuranceCost;
         private final String insuranceNumber;
@@ -77,21 +80,33 @@ public class Car extends Transport {
         public String getInsuranceNumber() {
             return insuranceNumber;
         }
+
     }
 
     public double engineVolume;
+
     public String speedBox;
     private final String carType;
     private String number;
     private final int seatsAmount;
     private boolean wheels;
-
     private Insurance insurance;
 
-    public Car(String brand, String model, double engineVolume, String color, int productionYear,
-               String productionCountry, String speedBox, String carType, String number, int seatsAmount,
-               String wheels, Insurance insurance, Integer maxSpeed) {
-        super(brand, model, productionYear, productionCountry, color, maxSpeed);
+    public Car(String brand,
+               String model,
+               double engineVolume,
+               String color,
+               int productionYear,
+               String productionCountry,
+               String speedBox,
+               String carType,
+               String number,
+               int seatsAmount,
+               String wheels,
+               Insurance insurance,
+               Integer maxSpeed,
+               String fuel) {
+        super(brand, model, productionYear, productionCountry, color, maxSpeed, fuel);
 
         setEngineVolume(engineVolume);
 
@@ -112,6 +127,20 @@ public class Car extends Transport {
         setWheels(wheels);
         setInsurance(insurance);
 
+    }
+
+    @Override
+    public void refill(String fuel) {
+        if (fuel.equals("petrol") || fuel.equals("diesel")) {
+            System.out.println("Заехать на запрвку, подъехать к колонке, заправиться нужным топливом.");
+        } else {
+            System.out.println("Заехать на паркинг, подъехать к розетке и зарядить батареи.");
+        }
+    }
+
+    @Override
+    public void printData2() {
+        System.out.printf("\nАвтомобиль %s %s, используемое топливо %s.", getBrand(), getModel(), getFuel());
     }
 
     public void printData(boolean wheels) {

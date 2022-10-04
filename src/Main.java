@@ -7,33 +7,33 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-        Car ladaGrande = new Car("null", "null", 1.7, "Жёлтый", 2015,
+        Car ladaGrande = new Car("Lada", "Grande", 1.7, "Жёлтый", 2015,
                 null, "Механика", "Седан", "е922ыв333", 4,
                 "Зима", new Car.Insurance(LocalDate.of(1988, 12, 11), 1000,
-                "123456789"),60);
+                "123456789"),60,"petrol");
 
         Car audiA850LTdiQuattro = new Car("Audi", "A8 50 L TDI quattro", 0, "Чёрный",
                 2020, "Германия", "автомат", "Хэтчбек", "е345нн333",
                 5, "лето", new Car.Insurance(LocalDate.of(2021, 12, 10),
-                10000, "987654321"), 70);
+                10000, "987654321"), 70,"diesel");
 
         Car bmwZ8 = new Car("BMW", "Z8", 3.0, null, 2021,
 
                 "Германия", "робот", "универсал", "у999ке888",
                 3, "лто", new Car.Insurance(LocalDate.of(2022, 12, 11),
-                4000, "122345ff1"), 90);
+                4000, "122345ff1"), 90, "batteries");
 
         Car kiaSportage = new Car("Kia", "4 поколение", 2.4, "Красный", 0,
                 "Южная Корея", "полуавтомат", "лифтбек", "а444пр666",
                 8, "стужа", new Car.Insurance(LocalDate.of(2022, 10, 1),
-                2000, "1234567890"), 100);
+                2000, "1234567890"), 100, "petrol");
 
 
         Car hyundaiAvante = new Car("Hyundai", "Avante", 1.6, "Оранжевый",
                 2016,
                 "Южная Корея", "вариатор", "минивэн", "у432ке456",
                 15, "Лето", new Car.Insurance(LocalDate.of(1999, 6, 2),
-                12000, "uytbyfert"), 200);
+                12000, "uytbyfert"), 200, "diesel");
 
 
         ladaGrande.printData(ladaGrande.getWheels());
@@ -66,13 +66,14 @@ public class Main {
         System.out.println();
         System.out.println("Наследование. Д.з.1 задание 2");
 
-        var lastochka = new Train("Ласточка", "B-901", 2011, 301,
-                "России","",3500,6,"Белорусского вокзала",
-                "Минск-Пассажирский", 11);
+        Train lastochka = new Train("Ласточка", "B-901", 2011, 301,
+                "России", "", 3500, 6, "Белорусского вокзала",
+                "Минск-Пассажирский", 11, "diesel");
 
-        var leningrad = new Train("Ленинград", "Д-125", 2019, 270, "России",
+        var leningrad = new Train("Ленинград", "Д-125", 2019, 270,
+                "России",
                 "", 1700, 8, "Ленинградского вокзала",
-                "Ленинград-Пассажирский", 8);
+                "Ленинград-Пассажирский", 8, "diesel");
 
         lastochka.printTrain();
         leningrad.printTrain();
@@ -81,17 +82,37 @@ public class Main {
         System.out.println("Наследование. Д.з.1 задание 3");
 
         var ikarus = new Bus("Икарус", "111", 1980, "Венгрии", "синего",
-                120);
+                120, "diesel");
 
         var liaz = new Bus("Лиаз", "222", 2000, "России", "красного",
-                150);
+                150, "petrol");
 
-        var mersedes = new Bus("Мерседес", "333", 2020, "Германии", "жёлтого",
-                180);
+        var mersedes = new Bus("Мерседес", "333", 2020, "Германии",
+                "жёлтого",
+                180, "diesel");
 
         ikarus.printBus();
         liaz.printBus();
         mersedes.printBus();
+
+        System.out.println();
+        System.out.println("Наследование. Д.з.2 задание 1");
+        ladaGrande.refill(ladaGrande.getFuel());
+        lastochka.refill(lastochka.getFuel());
+        mersedes.refill(mersedes.getFuel());
+
+        ladaGrande.printData2();
+        audiA850LTdiQuattro.printData2();
+        bmwZ8.printData2();
+        kiaSportage.printData2();
+        hyundaiAvante.printData2();
+
+        lastochka.printData2();
+        leningrad.printData2();
+
+        ikarus.printData2();
+        liaz.printData2();
+        mersedes.printData2();
     }
 
 
