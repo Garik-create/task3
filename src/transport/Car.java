@@ -79,8 +79,8 @@ public class Car extends Transport {
         }
     }
 
-    public double engineVolume;
-    public String speedBox;
+    private double engineVolume;
+    private String speedBox;
     private final String carType;
     private String number;
     private final int seatsAmount;
