@@ -19,7 +19,7 @@ public abstract class Transport {
 //                     String color,
 //                     Integer maxSpeed,
 //                     String fuel)
-                     {
+    {
         if (brand != null) {
             this.brand = brand;
         } else {
@@ -69,6 +69,9 @@ public abstract class Transport {
             this.engineVolume = 1.5;
         }
     }
+
+    @Override
+    public abstract String toString();
 
     //    public abstract void refill(String fuel);
 //    public abstract void printData2();

@@ -23,6 +23,22 @@ public class Main {
         var mersBus = new Bus("Мерседес", "333", 2.2);
         var mersBus2 = new Bus("Мерседес", "444", 2.7);
 
+        System.out.println();
+        System.out.println(mersedes);
+        System.out.println(bmw);
+        System.out.println(audi);
+        System.out.println(lamborgini);
+        System.out.println();
+        System.out.println(volvo);
+        System.out.println(kamaz);
+        System.out.println(maz);
+        System.out.println(toyota);
+        System.out.println();
+        System.out.println(ikarus);
+        System.out.println(liaz);
+        System.out.println(mersBus);
+        System.out.println(mersBus2);
+
 //        System.out.println(mersBus2);
 
 //        Car ladaGrande = new Car("Lada", "Grande", 1.7, "Жёлтый", 2015,

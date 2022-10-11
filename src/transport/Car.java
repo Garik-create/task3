@@ -2,7 +2,7 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car extends Transport {
+public class Car extends Transport implements Competing{
 //    public static class Key {
 //
 //        private String remoteStart;
@@ -164,6 +164,33 @@ public class Car extends Transport {
     @Override
     public void setEngineVolume(double engineVolume) {
         super.setEngineVolume(engineVolume);
+    }
+
+    @Override
+    public String toString() {
+        return "Легковой автомобиль " + getBrand() + " " + getModel() + ", объём двигателя "
+                + getEngineVolume()+" литров.";
+    }
+
+    @Override
+    public void doPitStop() {
+        System.out.println("Проехал 10 кругов.");
+        System.out.println("Сверни в тех. зону.");
+        System.out.println("Поменяй резину.");
+    }
+
+    @Override
+    public void getBestTimeOfCircle() {
+        System.out.println("Проехал 10 кругов.");
+        System.out.println("Замерил время прохождения каждого круга.");
+        System.out.println("Определил минимальное время на один круг.");
+    }
+
+    @Override
+    public void getMaxSpeed() {
+        System.out.println("Проехал 10 кругов.");
+        System.out.println("Замерил время прохождения каждого круга.");
+        System.out.println("Определил максимальную скорость на круге.");
     }
 
     //    @Override

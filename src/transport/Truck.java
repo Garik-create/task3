@@ -1,6 +1,6 @@
 package transport;
 
-public class Truck extends Transport {
+public class Truck extends Transport implements Competing{
 
     public Truck(String brand,
                  String model,
@@ -43,6 +43,34 @@ public class Truck extends Transport {
     @Override
     public void setEngineVolume(double engineVolume) {
         super.setEngineVolume(engineVolume);
+    }
+
+    @Override
+    public String toString() {
+        return "Грузовой автомобиль " + getBrand() + " " + getModel() + ", объём двигателя "
+                + getEngineVolume()+" литров.";
+    }
+
+    @Override
+    public void doPitStop() {
+        System.out.println("Проехал 20 кругов.");
+        System.out.println("Сверни в тех. зону.");
+        System.out.println("Поменяй резину.");
+        System.out.println("Вернись в гонку.");
+    }
+
+    @Override
+    public void getBestTimeOfCircle() {
+        System.out.println("Проехал 20 кругов.");
+        System.out.println("Засеки время прохожднения каждого круга.");
+        System.out.println("Выбери лучшее время.");
+    }
+
+    @Override
+    public void getMaxSpeed() {
+        System.out.println("Проехал 20 кругов.");
+        System.out.println("Засеки время прохожднения каждого круга.");
+        System.out.println("Определи максимальную скорость на круге.");
     }
 
     //    @Override
