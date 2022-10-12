@@ -147,6 +147,27 @@ public class Car extends Transport implements Competing{
     }
 
     @Override
+    public void doPitStop() {
+        System.out.println("Проехал 10 кругов.");
+        System.out.println("Сверни в тех. зону.");
+        System.out.println("Поменяй резину.");
+    }
+
+    @Override
+    public void getBestTimeOfCircle() {
+        System.out.println("Проехал 10 кругов.");
+        System.out.println("Замерил время прохождения каждого круга.");
+        System.out.println("Определил минимальное время на один круг.");
+    }
+
+    @Override
+    public void getMaxSpeed() {
+        System.out.println("Проехал 10 кругов.");
+        System.out.println("Замерил время прохождения каждого круга.");
+        System.out.println("Определил максимальную скорость на круге.");
+    }
+
+    @Override
     public String getBrand() {
         return super.getBrand();
     }
@@ -170,27 +191,6 @@ public class Car extends Transport implements Competing{
     public String toString() {
         return "Легковой автомобиль " + getBrand() + " " + getModel() + ", объём двигателя "
                 + getEngineVolume()+" литров.";
-    }
-
-    @Override
-    public void doPitStop() {
-        System.out.println("Проехал 10 кругов.");
-        System.out.println("Сверни в тех. зону.");
-        System.out.println("Поменяй резину.");
-    }
-
-    @Override
-    public void getBestTimeOfCircle() {
-        System.out.println("Проехал 10 кругов.");
-        System.out.println("Замерил время прохождения каждого круга.");
-        System.out.println("Определил минимальное время на один круг.");
-    }
-
-    @Override
-    public void getMaxSpeed() {
-        System.out.println("Проехал 10 кругов.");
-        System.out.println("Замерил время прохождения каждого круга.");
-        System.out.println("Определил максимальную скорость на круге.");
     }
 
     //    @Override

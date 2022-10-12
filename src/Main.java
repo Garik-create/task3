@@ -1,9 +1,6 @@
-import transport.Bus;
-import transport.Car;
-import transport.Truck;
+import transport.*;
 //import transport.Train;
 
-import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,8 +20,17 @@ public class Main {
         var mersBus = new Bus("Мерседес", "333", 2.2);
         var mersBus2 = new Bus("Мерседес", "444", 2.7);
 
+        Driver ivan = new Driver("Ivan", true, 10);
+        Driver peter = new Driver("Peter", true, 5);
+        Driver semen = new Driver("Semyon", true, 7);
+
+
         System.out.println();
         System.out.println(mersedes);
+        mersedes.startMotion();
+        mersedes.doPitStop();
+        mersedes.finishMotion();
+        System.out.println();
         System.out.println(bmw);
         System.out.println(audi);
         System.out.println(lamborgini);
@@ -39,6 +45,14 @@ public class Main {
         System.out.println(mersBus);
         System.out.println(mersBus2);
 
+        System.out.println();
+        DriverB<Driver, Car> driverB = new DriverB<>('B');
+        DriverC<Driver, Truck> driverC = new DriverC<>('C');
+        DriverD<Driver, Bus> driverD = new DriverD<>('D');
+        driverB.canDrive(ivan, mersedes);
+        driverC.canDrive(peter,kamaz);
+        driverD.canDrive(semen,ikarus);
+//        System.out.println("Driver "+DriverB.+);
 //        System.out.println(mersBus2);
 
 //        Car ladaGrande = new Car("Lada", "Grande", 1.7, "Жёлтый", 2015,
