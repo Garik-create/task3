@@ -1,7 +1,5 @@
 package transport;
 
-import java.time.LocalDate;
-
 public class Car extends Transport implements Competing {
 //    public static class Key {
 //
@@ -91,11 +89,71 @@ public class Car extends Transport implements Competing {
 //    private final int seatsAmount;
 //    private boolean wheels;
 //    private Insurance insurance;
-    public enum carBodyTypes {
-        BDY_SEDAN, BDY_HATCHBACK, BDY_COUPE, BDY_UNIVERSAL, BDY_SUV, BDY_CROSSOVER, BDY_PICKUP,
-        BDY_VAN, BDY_MINIVAN
+    public enum CarBodyType {
+        BDY_SEDAN("Седан"),
+        BDY_HATCHBACK("Хетчбек"),
+        BDY_COUPE("Купе"),
+        BDY_UNIVERSAL("Универсал"),
+        BDY_SUV("Внедорожник"),
+        BDY_CROSSOVER("Кроссовер"),
+        BDY_PICKUP("Пикап"),
+        BDY_VAN("Фургон"),
+        BDY_MINIVAN("Минивэн");
+
+
+        private String carBodyName;
+
+        CarBodyType(String carBodyName) {
+            this.carBodyName = carBodyName;
+        }
+
+        public String getCarBodyName() {
+            return carBodyName;
+        }
+
+        public void setCarBodyName(String carBodyName) {
+            this.carBodyName = carBodyName;
+        }
+
+
     }
 
+
+
+    public void foundCarBodyType(String carBodyView) {
+        CarBodyType carBodyType = CarBodyType.valueOf(carBodyView);
+        switch (carBodyType) {
+            case BDY_SUV:
+                System.out.println("Внедорожник");
+                return;
+            case BDY_COUPE:
+                System.out.println("Купе");
+                return;
+            case BDY_VAN:
+                System.out.println("Фургон");
+                return;
+            case BDY_SEDAN:
+                System.out.println("Седан");
+                return;
+            case BDY_PICKUP:
+                System.out.println("Пикап");
+                return;
+            case BDY_MINIVAN:
+                System.out.println("Минивэн");
+                return;
+            case BDY_CROSSOVER:
+                System.out.println("Кроссовер");
+                return;
+            case BDY_HATCHBACK:
+                System.out.println("Хетчбек");
+                return;
+            case BDY_UNIVERSAL:
+                System.out.println("Универсал");
+                return;
+            default:
+                System.out.println("Данных по авто недостаточно");
+        }
+    }
     public Car(String brand,
                String model,
                double engineVolume)
@@ -196,6 +254,7 @@ public class Car extends Transport implements Competing {
         return "Легковой автомобиль " + getBrand() + " " + getModel() + ", объём двигателя "
                 + getEngineVolume() + " литров.";
     }
+
 
     //    @Override
 //    public void refill(String fuel) {

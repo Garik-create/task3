@@ -2,7 +2,44 @@ package transport;
 
 public class Truck extends Transport implements Competing {
 
-    public enum carBodyTypes {BDY_N1, BDY_N2, BDY_N3}
+    public enum CarBodyType {
+        BDY_N1("с полной массой до 3,5 тонн"),
+        BDY_N2("с полной массой свыше 3,5 до 12 тонн"),
+        BDY_N3("с полной массой свыше 12 тонн");
+
+        private String carBodyName;
+
+        CarBodyType(String carBodyName) {
+            this.carBodyName = carBodyName;
+        }
+
+        public String getCarBodyName() {
+            return carBodyName;
+        }
+
+        public void setCarBodyName(String carBodyName) {
+            this.carBodyName = carBodyName;
+        }
+    }
+
+    public void foundCarBodyType(String carBodyView) {
+        CarBodyType carBodyType = CarBodyType.valueOf(carBodyView);
+
+        switch (carBodyType) {
+            case BDY_N1:
+                System.out.println(CarBodyType.BDY_N1.getCarBodyName());
+                return;
+            case BDY_N2:
+                System.out.println(CarBodyType.BDY_N2.getCarBodyName());
+                return;
+            case BDY_N3:
+                System.out.println(CarBodyType.BDY_N3.getCarBodyName());
+                return;
+            default:
+                System.out.println("Данных по авто недостаточно");
+        }
+    }
+
 
     public Truck(String brand,
                  String model,

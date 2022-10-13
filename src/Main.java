@@ -52,6 +52,12 @@ public class Main {
         driverB.canDrive(ivan, mersedes);
         driverC.canDrive(peter,kamaz);
         driverD.canDrive(semen,ikarus);
+
+        System.out.println();
+        mersedes.foundCarBodyType("BDY_PICKUP");
+        volvo.foundCarBodyType("BDY_N1");
+        ikarus.foundCarBodyName("BDY_EXTRA_LARGE");
+
 //        System.out.println("Driver "+DriverB.+);
 //        System.out.println(mersBus2);
 

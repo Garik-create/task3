@@ -2,7 +2,50 @@ package transport;
 
 public class Bus extends Transport implements Competing {
 
-    public enum carBodyTypes {BDY_EXTRA_SMALL, BDY_SMALL, BDY_MEDIUM, BDY_LARGE, BDY_EXTRA_LARGE}
+    public enum CarBodyType {
+        BDY_EXTRA_SMALL("до 10 мест"),
+        BDY_SMALL("до 25 мест"),
+        BDY_MEDIUM("40-50 мест"),
+        BDY_LARGE("60-80 мест"),
+        BDY_EXTRA_LARGE("100-120 мест");
+        private String carBodyName;
+
+        CarBodyType(String carBodyName) {
+            this.carBodyName = carBodyName;
+        }
+
+        public String getCarBodyName() {
+            return carBodyName;
+        }
+
+        public void setCarBodyName(String carBodyName) {
+            this.carBodyName = carBodyName;
+        }
+
+    }
+
+    public void foundCarBodyName(String carBodyView) {
+        CarBodyType carBodyType = CarBodyType.valueOf(carBodyView);
+        switch (carBodyType) {
+            case BDY_EXTRA_LARGE:
+                System.out.println(CarBodyType.BDY_EXTRA_LARGE.getCarBodyName());
+                return;
+            case BDY_LARGE:
+                System.out.println(CarBodyType.BDY_LARGE.getCarBodyName());
+                return;
+            case BDY_SMALL:
+                System.out.println(CarBodyType.BDY_SMALL.getCarBodyName());
+                return;
+            case BDY_MEDIUM:
+                System.out.println(CarBodyType.BDY_MEDIUM.getCarBodyName());
+                return;
+            case BDY_EXTRA_SMALL:
+                System.out.println(CarBodyType.BDY_EXTRA_SMALL.getCarBodyName());
+                return;
+            default:
+                System.out.println("Данных по авто недостаточно");
+        }
+    }
 
     public Bus(String brand,
                String model,
