@@ -2,7 +2,7 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car extends Transport implements Competing{
+public class Car extends Transport implements Competing {
 //    public static class Key {
 //
 //        private String remoteStart;
@@ -85,12 +85,16 @@ public class Car extends Transport implements Competing{
 
 //    public double engineVolume;
 
-//    public String speedBox;
+    //    public String speedBox;
 //    private final String carType;
 //    private String number;
 //    private final int seatsAmount;
 //    private boolean wheels;
 //    private Insurance insurance;
+    public enum carBodyTypes {
+        BDY_SEDAN, BDY_HATCHBACK, BDY_COUPE, BDY_UNIVERSAL, BDY_SUV, BDY_CROSSOVER, BDY_PICKUP,
+        BDY_VAN, BDY_MINIVAN
+    }
 
     public Car(String brand,
                String model,
@@ -106,8 +110,8 @@ public class Car extends Transport implements Competing{
 //               Insurance insurance,
 //               Integer maxSpeed,
 //               String fuel)
-               {
-        super(brand, model,engineVolume);
+    {
+        super(brand, model, engineVolume);
 
 //        setEngineVolume(engineVolume);
 
@@ -190,7 +194,7 @@ public class Car extends Transport implements Competing{
     @Override
     public String toString() {
         return "Легковой автомобиль " + getBrand() + " " + getModel() + ", объём двигателя "
-                + getEngineVolume()+" литров.";
+                + getEngineVolume() + " литров.";
     }
 
     //    @Override

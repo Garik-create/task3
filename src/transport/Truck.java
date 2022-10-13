@@ -1,11 +1,12 @@
 package transport;
 
-public class Truck extends Transport implements Competing{
+public class Truck extends Transport implements Competing {
+
+    public enum carBodyTypes {BDY_N1, BDY_N2, BDY_N3}
 
     public Truck(String brand,
                  String model,
-                 double engineVolume)
-    {
+                 double engineVolume) {
         super(brand, model, engineVolume);
     }
 
@@ -70,7 +71,7 @@ public class Truck extends Transport implements Competing{
     @Override
     public String toString() {
         return "Грузовой автомобиль " + getBrand() + " " + getModel() + ", объём двигателя "
-                + getEngineVolume()+" литров.";
+                + getEngineVolume() + " литров.";
     }
 
     //    @Override

@@ -1,6 +1,9 @@
 package transport;
 
-public class Bus extends Transport implements Competing{
+public class Bus extends Transport implements Competing {
+
+    public enum carBodyTypes {BDY_EXTRA_SMALL, BDY_SMALL, BDY_MEDIUM, BDY_LARGE, BDY_EXTRA_LARGE}
+
     public Bus(String brand,
                String model,
                double engineVolume)
@@ -9,7 +12,7 @@ public class Bus extends Transport implements Competing{
 //               String color,
 //               Integer maxSpeed,
 //               String fuel)
-               {
+    {
         super(brand, model, engineVolume);
     }
 
@@ -52,7 +55,7 @@ public class Bus extends Transport implements Competing{
     @Override
     public String toString() {
         return "Автобус " + getBrand() + " " + getModel() + ", объём двигателя "
-                + getEngineVolume()+" литров.";
+                + getEngineVolume() + " литров.";
     }
 
     @Override
@@ -77,7 +80,6 @@ public class Bus extends Transport implements Competing{
         System.out.println("Определи максимальную скорость на круге.");
     }
 }
-
 
 
 //    @Override
