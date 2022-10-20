@@ -10,22 +10,22 @@ public class Main {
         Car audi = new Car("Ауди", "ц103", 2.9);
         Car lamborgini = new Car("Ламборджини", "у104", 3);
 
-        Truck volvo = new Truck("Вольво", "к201", 3);
-        Truck kamaz = new Truck("Камаз", "е202", 3.5);
-        Truck maz = new Truck("Маз", "н203", 3.7);
-        Truck toyota = new Truck("Тойота", "г204", 4.5);
+        Truck volvo = new Truck("Вольво", "к201", 3,'C');
+        Truck kamaz = new Truck("Камаз", "е202", 3.5,'C');
+        Truck maz = new Truck("Маз", "н203", 3.7,'C');
+        Truck toyota = new Truck("Тойота", "г204", 4.5,'C');
 
         var ikarus = new Bus("Икарус", "111", 2.5);
         var liaz = new Bus("Лиаз", "222", 2);
         var mersBus = new Bus("Мерседес", "333", 2.2);
         var mersBus2 = new Bus("Мерседес", "444", 2.7);
 
-        Driver ivan = new Driver("Ivan", true, 10);
-        Driver peter = new Driver("Peter", true, 5);
-        Driver semen = new Driver("Semyon", true, 7);
+        DriverB ivan = new DriverB('B', "Ivan", true, 10, bmw);
+        DriverC peter = new DriverC("Peter", 'C', true, 5,maz);
+        DriverD semen = new DriverD('D', true, "Semyon",7,liaz);
 
 
-        System.out.println();
+      /*  System.out.println();
         System.out.println(mersedes);
         mersedes.startMotion();
         mersedes.doPitStop();
@@ -43,15 +43,14 @@ public class Main {
         System.out.println(ikarus);
         System.out.println(liaz);
         System.out.println(mersBus);
-        System.out.println(mersBus2);
+        System.out.println(mersBus2);*/
 
         System.out.println();
-        DriverB<Driver, Car> driverB = new DriverB<>('B');
-        DriverC<Driver, Truck> driverC = new DriverC<>('C');
-        DriverD<Driver, Bus> driverD = new DriverD<>('D');
-        driverB.canDrive(ivan, mersedes);
-        driverC.canDrive(peter,kamaz);
-        driverD.canDrive(semen,ikarus);
+        ivan.canDrive(audi);
+        System.out.println();
+        peter.canDrive(kamaz);
+        System.out.println();
+        semen.canDrive(mersBus);
 //        System.out.println("Driver "+DriverB.+);
 //        System.out.println(mersBus2);
 

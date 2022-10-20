@@ -1,9 +1,10 @@
 package transport;
 
-public class DriverB<B extends Driver, C extends Car> {
+public class DriverB extends Driver<Car> {
     private char licenseType;
 
-    public DriverB(char licenseType) {
+    public DriverB(char licenseType, String driverName, boolean isLicensed, int driverExperience, Car transport) {
+        super(driverName, isLicensed, driverExperience, transport);
         this.licenseType = licenseType;
     }
 
@@ -23,23 +24,23 @@ public class DriverB<B extends Driver, C extends Car> {
 //        this.engineVolume = engineVolume;
 //    }
 
-    public void canDrive(B Driver, C Car) {
-
-        if (getLicenseType()=='B') {
-            System.out.println("Водитель "+ Driver.getDriverName()+" управляет автомобилем "+Car.getBrand()+
-                    " "+Car.getModel()+" и \n" +
-                    "будет участвовать в заезде.");
-        } else {
-            System.out.println("Водитель "+Driver.getDriverName()+" не участвует в заезде.");
-        }
-    }
-
     public char getLicenseType() {
         return licenseType;
     }
 
     public void setLicenseType(char licenseType) {
         this.licenseType = licenseType;
+    }
+
+    @Override
+    public void canDrive(Car transport) {
+        if (getLicenseType() == 'B') {
+            System.out.println("Водитель " + getDriverName() + " управляет автомобилем " + transport.getBrand() +
+                    " " + transport.getModel() + " и \n" +
+                    "будет участвовать в заезде.");
+        } else {
+            System.out.println("Водитель " + getDriverName() + " не участвует в заезде.");
+        }
     }
 
 //    public String getDriverName() {

@@ -1,9 +1,10 @@
 package transport;
 
-public class Driver {
+public abstract class Driver<T extends Transport & Competing> {
     private String driverName;
     private boolean isLicensed;
     private int driverExperience;
+    private T transport;
 
 //    public void startMotion() {
 //
@@ -13,16 +14,28 @@ public class Driver {
 //
 //    }
 
-    public Driver(String driverName, boolean isLicensed, int driverExperience) {
+    public Driver(String driverName, boolean isLicensed, int driverExperience, T transport) {
         if (driverName!=null && !driverName.isBlank()) {
             this.driverName = driverName;
         } else {
             this.driverName = "Информация отсутсвует.";
         }
+        if (transport != null) {
+            this.transport = transport;
+        }
         setLicensed(isLicensed);
         setDriverExperience(driverExperience);
     }
 
+    public T getTransport() {
+        return transport;
+    }
+
+    public void setTransport(T transport) {
+        this.transport = transport;
+    }
+
+    public abstract void canDrive(T transport);
     public void fillTank() {
 
     }

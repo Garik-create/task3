@@ -2,12 +2,22 @@ package transport;
 
 public class Truck extends Transport implements Competing{
 
+    private final char licenseType;
+
     public Truck(String brand,
                  String model,
-                 double engineVolume)
+                 double engineVolume,
+                 char licenseType)
     {
         super(brand, model, engineVolume);
+        this.licenseType = licenseType;
     }
+
+    public char getLicenseType() {
+        return licenseType;
+    }
+
+
 
     @Override
     public void startMotion() {
