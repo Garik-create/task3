@@ -5,52 +5,68 @@ import transport.*;
 public class Main {
     public static void main(String[] args) {
 
-        Car mersedes = new Car("Мерседес", "А101", 2.5);
-        Car bmw = new Car("БМВ", "и102", 2.7);
-        Car audi = new Car("Ауди", "ц103", 2.9);
-        Car lamborgini = new Car("Ламборджини", "у104", 3);
+        Car mersedes = new Car("Мерседес", "А101", 2.5,false);
+        Car bmw = new Car("БМВ", "и102", 2.7,false);
+        Car audi = new Car("Ауди", "ц103", 2.9,true);
+        Car lamborgini = new Car("Ламборджини", "у104", 3, false);
 
-        Truck volvo = new Truck("Вольво", "к201", 3,'C');
-        Truck kamaz = new Truck("Камаз", "е202", 3.5,'C');
-        Truck maz = new Truck("Маз", "н203", 3.7,'C');
-        Truck toyota = new Truck("Тойота", "г204", 4.5,'C');
+        Truck volvo = new Truck("Вольво", "к201", 3, false);
+        Truck kamaz = new Truck("Камаз", "е202", 3.5, false);
+        Truck maz = new Truck("Маз", "н203", 3.7, false);
+        Truck toyota = new Truck("Тойота", "г204", 4.5,true);
 
         var ikarus = new Bus("Икарус", "111", 2.5);
         var liaz = new Bus("Лиаз", "222", 2);
         var mersBus = new Bus("Мерседес", "333", 2.2);
         var mersBus2 = new Bus("Мерседес", "444", 2.7);
 
-        DriverB ivan = new DriverB('B', "Ivan", true, 10, bmw);
+        DriverB ivan = new DriverB('o', "Ivan", true, 10, bmw);
         DriverC peter = new DriverC("Peter", 'C', true, 5,maz);
         DriverD semen = new DriverD('D', true, "Semyon",7,liaz);
 
 
-      /*  System.out.println();
-        System.out.println(mersedes);
-        mersedes.startMotion();
-        mersedes.doPitStop();
-        mersedes.finishMotion();
         System.out.println();
+        System.out.println(mersedes);
+        mersedes.passDiagnostics();
+//        mersedes.startMotion();
+//        mersedes.doPitStop();
+//        mersedes.finishMotion();
+//        System.out.println();
         System.out.println(bmw);
+        mersedes.passDiagnostics();
         System.out.println(audi);
+        audi.passDiagnostics();
         System.out.println(lamborgini);
+        lamborgini.passDiagnostics();
         System.out.println();
         System.out.println(volvo);
+        volvo.passDiagnostics();
         System.out.println(kamaz);
+        kamaz.passDiagnostics();
         System.out.println(maz);
+        maz.passDiagnostics();
         System.out.println(toyota);
+        toyota.passDiagnostics();
         System.out.println();
         System.out.println(ikarus);
+        ikarus.passDiagnostics();
         System.out.println(liaz);
+        liaz.passDiagnostics();
         System.out.println(mersBus);
-        System.out.println(mersBus2);*/
+        mersBus.passDiagnostics();
+        System.out.println(mersBus2);
+        mersBus2.passDiagnostics();
 
         System.out.println();
         ivan.canDrive(audi);
+        ivan.getMessage();
         System.out.println();
         peter.canDrive(kamaz);
+        peter.getMessage();
         System.out.println();
         semen.canDrive(mersBus);
+        semen.getMessage();
+
 //        System.out.println("Driver "+DriverB.+);
 //        System.out.println(mersBus2);
 
@@ -161,6 +177,8 @@ public class Main {
 //        liaz.printData2();
 //        mersedes.printData2();
     }
+
+
 
 
 }

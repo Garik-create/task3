@@ -46,6 +46,9 @@ public abstract class Transport {
 //        setFuel(fuel);
     }
 
+
+    public abstract void passDiagnostics();
+
     public abstract void startMotion();
 
     public abstract void finishMotion();

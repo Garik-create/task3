@@ -1,8 +1,6 @@
 package transport;
 
-import java.time.LocalDate;
-
-public class Car extends Transport implements Competing{
+public class Car extends Transport implements Competing {
 //    public static class Key {
 //
 //        private String remoteStart;
@@ -92,9 +90,12 @@ public class Car extends Transport implements Competing{
 //    private boolean wheels;
 //    private Insurance insurance;
 
+    private boolean isChecked;
+
     public Car(String brand,
                String model,
-               double engineVolume)
+               double engineVolume,
+               boolean isChecked)
 //               String color,
 //               int productionYear,
 //               String productionCountry,
@@ -106,8 +107,9 @@ public class Car extends Transport implements Competing{
 //               Insurance insurance,
 //               Integer maxSpeed,
 //               String fuel)
-               {
-        super(brand, model,engineVolume);
+    {
+        super(brand, model, engineVolume);
+        this.isChecked = isChecked;
 
 //        setEngineVolume(engineVolume);
 
@@ -128,6 +130,21 @@ public class Car extends Transport implements Competing{
 //        setWheels(wheels);
 //        setInsurance(insurance);
 
+    }
+
+    @Override
+    public void passDiagnostics() {
+        try {
+            isPassDiagnostics(isChecked());
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void isPassDiagnostics(boolean isChecked) {
+        if (!isChecked) {
+            throw new RuntimeException("Необходимо пройти диагносику!");
+        }
     }
 
     @Override
@@ -187,10 +204,18 @@ public class Car extends Transport implements Competing{
         super.setEngineVolume(engineVolume);
     }
 
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
     @Override
     public String toString() {
         return "Легковой автомобиль " + getBrand() + " " + getModel() + ", объём двигателя "
-                + getEngineVolume()+" литров.";
+                + getEngineVolume() + " литров.";
     }
 
     //    @Override

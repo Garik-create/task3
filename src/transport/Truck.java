@@ -2,20 +2,43 @@ package transport;
 
 public class Truck extends Transport implements Competing{
 
-    private final char licenseType;
+    private boolean isChecked;
 
     public Truck(String brand,
                  String model,
                  double engineVolume,
-                 char licenseType)
+                 boolean isChecked)
     {
         super(brand, model, engineVolume);
-        this.licenseType = licenseType;
+        this.isChecked = isChecked;
     }
 
-    public char getLicenseType() {
-        return licenseType;
+    @Override
+    public void passDiagnostics() {
+        try {
+            isPassDiagnostics(isChecked());
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
+
+    public void isPassDiagnostics(boolean isChecked) {
+        if (!isChecked) {
+            throw new RuntimeException("Необходимо пройти диагносику!");
+        }
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+//    public char getLicenseType() {
+//        return licenseType;
+//    }
 
 
 

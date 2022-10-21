@@ -24,8 +24,24 @@ public class DriverB extends Driver<Car> {
 //        this.engineVolume = engineVolume;
 //    }
 
+    public void getMessage() {
+        try {
+            checkDriverId(getLicenseType());
+
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void checkDriverId(char licenseType) {
+        if (licenseType != 'B') {
+            throw new RuntimeException("Необходимо указать тип прав!");
+        }
+    }
+
     public char getLicenseType() {
-        return licenseType;
+
+            return licenseType;
     }
 
     public void setLicenseType(char licenseType) {

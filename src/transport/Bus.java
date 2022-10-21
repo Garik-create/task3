@@ -14,7 +14,18 @@ public class Bus extends Transport implements Competing{
     }
 
     @Override
+    public void passDiagnostics() {
+        System.out.printf("Автобус %s %s в диагностике не требуется\n",getBrand(),getModel());
+    }
+
+//    public void printMessage() {
+//        System.out.println(getBrand()+getModel());
+//    }
+
+
+    @Override
     public void startMotion() {
+
         System.out.println("Включаю зажигание.");
         System.out.println("Снимаю машину с ручника.");
         System.out.println("Включаю передачу.");
