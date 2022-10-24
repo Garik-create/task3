@@ -61,6 +61,11 @@ public class Bus extends Transport implements Competing{
     }
 
     @Override
+    public boolean service() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "Автобус " + getBrand() + " " + getModel() + ", объём двигателя "
                 + getEngineVolume()+" литров.";

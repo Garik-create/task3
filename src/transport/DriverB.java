@@ -59,7 +59,11 @@ public class DriverB extends Driver<Car> {
         }
     }
 
-//    public String getDriverName() {
+    @Override
+    public String getDriverName() {
+        return super.getDriverName();
+    }
+    //    public String getDriverName() {
 //        return driverName;
 //    }
 

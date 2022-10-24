@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.ArrayList;
+
 public class Car extends Transport implements Competing {
 //    public static class Key {
 //
@@ -91,6 +93,9 @@ public class Car extends Transport implements Competing {
 //    private Insurance insurance;
 
     private boolean isChecked;
+//    private ArrayList<Car> competitor;
+
+//    private ArrayList<Sponsor> sponsors;
 
     public Car(String brand,
                String model,
@@ -110,6 +115,7 @@ public class Car extends Transport implements Competing {
     {
         super(brand, model, engineVolume);
         this.isChecked = isChecked;
+
 
 //        setEngineVolume(engineVolume);
 
@@ -202,6 +208,11 @@ public class Car extends Transport implements Competing {
     @Override
     public void setEngineVolume(double engineVolume) {
         super.setEngineVolume(engineVolume);
+    }
+
+    @Override
+    public boolean service() {
+        return false;
     }
 
     public boolean isChecked() {

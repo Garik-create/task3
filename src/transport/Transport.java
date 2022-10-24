@@ -1,16 +1,28 @@
 package transport;
 
+import java.sql.Array;
+import java.sql.Driver;
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport {
     private final String brand;
     private final String model;
     private double engineVolume;
+
+    //    private ArrayList<Transport> transportsInService;
+
+    private static ArrayList<Transport> competitors;
+    private List<Sponsor> sponsors = new ArrayList<>();
+
+    private List<Driver> drivers = new ArrayList<>();
+    private List<Mechanic<?>> mechanics = new ArrayList<>();
 
 //    private final int productionYear;
 //    private final String productionCountry;
 //    private String color;
 //    private int maxSpeed;
 //    private String fuel;
-
     public Transport(String brand,
                      String model,
                      double engineVolume)
@@ -31,6 +43,12 @@ public abstract class Transport {
             this.model = "default";
         }
         setEngineVolume(engineVolume);
+
+        competitors = new ArrayList<>();
+        sponsors = new ArrayList<>();
+
+        mechanics = new ArrayList<>();
+
 //        if (productionYear != 0) {
 //            this.productionYear = productionYear;
 //        } else {
@@ -46,6 +64,31 @@ public abstract class Transport {
 //        setFuel(fuel);
     }
 
+    public void addDriver(Driver driver) {
+        this.drivers.add(driver);
+    }
+    public void addMechanic(Mechanic<?> mechanic) {
+        this.mechanics.add(mechanic);
+    }
+    public void addSponsor(Sponsor sponsor) {
+        this.sponsors.add(sponsor);
+    }
+
+    public static ArrayList<Transport> getCompetitors() {
+        return competitors;
+    }
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
 
     public abstract void passDiagnostics();
 
@@ -53,9 +96,14 @@ public abstract class Transport {
 
     public abstract void finishMotion();
 
+//    public ArrayList<Transport> getTransportsInService() {
+//        return transportsInService;
+//    }
+
     public String getBrand() {
         return brand;
     }
+
 
     public String getModel() {
         return model;
@@ -72,6 +120,8 @@ public abstract class Transport {
             this.engineVolume = 1.5;
         }
     }
+
+    public abstract boolean service();
 
     @Override
     public abstract String toString();

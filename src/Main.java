@@ -1,4 +1,7 @@
 import transport.*;
+
+import java.util.IdentityHashMap;
+import java.util.Random;
 //import transport.Train;
 
 
@@ -20,9 +23,18 @@ public class Main {
         var mersBus = new Bus("Мерседес", "333", 2.2);
         var mersBus2 = new Bus("Мерседес", "444", 2.7);
 
-        DriverB ivan = new DriverB('o', "Ivan", true, 10, bmw);
+        DriverB ivan = new DriverB('B', "Ivan", true, 10, bmw);
+        DriverB alex = new DriverB('B', "Alex", true, 15, audi);
+//        DriverB igor = new DriverB('B', "Igor", true, 20, mersedes);
+        DriverB andrey = new DriverB('B', "Andrey", true, 12, lamborgini);
         DriverC peter = new DriverC("Peter", 'C', true, 5,maz);
+        DriverC vasya = new DriverC("Vasiliy", 'C', true, 5,kamaz);
+        DriverC dima = new DriverC("Dmitriy", 'C', true, 7,volvo);
+        DriverC serg = new DriverC("Sergey", 'C', true, 9,toyota);
         DriverD semen = new DriverD('D', true, "Semyon",7,liaz);
+        DriverD zhenya = new DriverD('D', true, "Evgeny",25,ikarus);
+        DriverD max = new DriverD('D', true, "Max",11,mersBus);
+        DriverD kostya = new DriverD('D', true, "Konstantin",7,mersBus2);
 
 
         System.out.println();
@@ -66,6 +78,81 @@ public class Main {
         System.out.println();
         semen.canDrive(mersBus);
         semen.getMessage();
+        System.out.println();
+
+        Transport.getCompetitors().add(mersedes);
+        Transport.getCompetitors().add(bmw);
+        Transport.getCompetitors().add(audi);
+        Transport.getCompetitors().add(lamborgini);
+        Transport.getCompetitors().add(volvo);
+        Transport.getCompetitors().add(kamaz);
+        Transport.getCompetitors().add(maz);
+        Transport.getCompetitors().add(toyota);
+        Transport.getCompetitors().add(ikarus);
+        Transport.getCompetitors().add(liaz);
+        Transport.getCompetitors().add(mersBus);
+        Transport.getCompetitors().add(mersBus2);
+
+        for (int i = 0; i < Transport.getCompetitors().size(); i++) {
+            System.out.println(Transport.getCompetitors().get(i).getBrand() +" "+
+                    Transport.getCompetitors().get(i).getModel()+" участвует в заезде.");
+        }
+
+
+
+
+        Mechanic<Car> den = new Mechanic<>("Den", "Service company two", "Cars");
+        Mechanic<Transport> bob = new Mechanic<>("Bob", "Service company one", "All");
+        Mechanic<Truck> mask = new Mechanic<>("Mask", "Service company three", "Trucks");
+        Mechanic<Bus> henry = new Mechanic<>("Henry", "Service company one", "Buses");
+
+        Sponsor sponsor1 = new Sponsor("Sponsor one", 1_000_000);
+        Sponsor sponsor2 = new Sponsor("Sponsor two", 2_000_000);
+        Sponsor sponsor3 = new Sponsor("Sponsor three", 3_000_000);
+        Sponsor sponsor4 = new Sponsor("Sponsor four", 4_000_000);
+
+
+
+        mersedes.getSponsors().add(sponsor1);
+        mersedes.getSponsors().add(sponsor2);
+        mersedes.getDrivers().add(den);
+        mersedes.getDrivers().add(igor);
+        bmw.getSponsors().add(sponsor2);
+        bmw.getSponsors().add(sponsor3);
+        audi.getSponsors().add(sponsor3);
+        audi.getSponsors().add(sponsor4);
+        lamborgini.getSponsors().add(sponsor4);
+        volvo.getSponsors().add(sponsor1);
+        kamaz.getSponsors().add(sponsor2);
+        maz.getSponsors().add(sponsor3);
+        toyota.getSponsors().add(sponsor4);
+        ikarus.getSponsors().add(sponsor1);
+        liaz.getSponsors().add(sponsor2);
+        mersBus.getSponsors().add(sponsor3);
+        mersBus2.getSponsors().add(sponsor4);
+
+//        bob.getTransportsInService().add(ikarus);
+//        bob.getTransportsInService().add(mersedes);
+//        bob.getTransportsInService().add(volvo);
+//        den.getTransportsInService().add(mersedes);
+//        den.getTransportsInService().add(audi);
+//        den.getTransportsInService().add(bmw);
+//        den.getTransportsInService().add(lamborgini);
+//        mask.getTransportsInService().add(volvo);
+//        mask.getTransportsInService().add(kamaz);
+//        mask.getTransportsInService().add(maz);
+//        mask.getTransportsInService().add(toyota);
+//        henry.getTransportsInService().add(ikarus);
+//        henry.getTransportsInService().add(liaz);
+//        henry.getTransportsInService().add(mersBus);
+//        henry.getTransportsInService().add(mersBus2);
+
+//        mersedes.getDrivers().add(igor);
+
+//        System.out.println(mersedes.getSponsors() + mersedes.);
+
+//        System.out.println("mersedes = " + mersedes.getSponsors() + mersedes.);
+
 
 //        System.out.println("Driver "+DriverB.+);
 //        System.out.println(mersBus2);
@@ -177,8 +264,5 @@ public class Main {
 //        liaz.printData2();
 //        mersedes.printData2();
     }
-
-
-
 
 }
