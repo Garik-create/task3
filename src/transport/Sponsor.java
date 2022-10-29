@@ -43,4 +43,9 @@ public class Sponsor {
             System.out.println("Укажите объём гранда.");
         }
     }
+
+//    @Override
+//    public String toString() {
+//        return "Спонсор " + sponsorName + " спонсорский гранд " + sponsorGrand;
+//    }
 }

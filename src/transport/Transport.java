@@ -1,7 +1,7 @@
 package transport;
 
-import java.sql.Array;
-import java.sql.Driver;
+//import java.sql.Array;
+//import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +12,9 @@ public abstract class Transport {
 
     //    private ArrayList<Transport> transportsInService;
 
-    private static ArrayList<Transport> competitors;
     private List<Sponsor> sponsors = new ArrayList<>();
 
-    private List<Driver> drivers = new ArrayList<>();
+    private List<Driver<?>> drivers = new ArrayList<>();
     private List<Mechanic<?>> mechanics = new ArrayList<>();
 
 //    private final int productionYear;
@@ -44,7 +43,6 @@ public abstract class Transport {
         }
         setEngineVolume(engineVolume);
 
-        competitors = new ArrayList<>();
         sponsors = new ArrayList<>();
 
         mechanics = new ArrayList<>();
@@ -74,15 +72,12 @@ public abstract class Transport {
         this.sponsors.add(sponsor);
     }
 
-    public static ArrayList<Transport> getCompetitors() {
-        return competitors;
-    }
 
     public List<Sponsor> getSponsors() {
         return sponsors;
     }
 
-    public List<Driver> getDrivers() {
+    public List<Driver<?>> getDrivers() {
         return drivers;
     }
 
