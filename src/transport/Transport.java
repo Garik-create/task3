@@ -1,7 +1,5 @@
 package transport;
 
-//import java.sql.Array;
-//import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +60,7 @@ public abstract class Transport {
 //        setFuel(fuel);
     }
 
-    public void addDriver(Driver driver) {
+    public void addDriver(Driver<?> driver)  {
         this.drivers.add(driver);
     }
     public void addMechanic(Mechanic<?> mechanic) {
