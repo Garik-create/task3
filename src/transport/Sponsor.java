@@ -44,8 +44,8 @@ public class Sponsor {
         }
     }
 
-//    @Override
-//    public String toString() {
-//        return "Спонсор " + sponsorName + " спонсорский гранд " + sponsorGrand;
-//    }
+    @Override
+    public String toString() {
+        return "Спонсор " + sponsorName + " спонсорский гранд " + sponsorGrand;
+    }
 }

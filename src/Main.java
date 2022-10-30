@@ -10,15 +10,15 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        Car mersedes = new Car("Мерседес", "А101", 2.5,false);
-        Car bmw = new Car("БМВ", "и102", 2.7,false);
-        Car audi = new Car("Ауди", "ц103", 2.9,true);
+        Car mersedes = new Car("Мерседес", "А101", 2.5, false);
+        Car bmw = new Car("БМВ", "и102", 2.7, false);
+        Car audi = new Car("Ауди", "ц103", 2.9, true);
         Car lamborgini = new Car("Ламборджини", "у104", 3, false);
 
         Truck volvo = new Truck("Вольво", "к201", 3, false);
         Truck kamaz = new Truck("Камаз", "е202", 3.5, false);
         Truck maz = new Truck("Маз", "н203", 3.7, false);
-        Truck toyota = new Truck("Тойота", "г204", 4.5,true);
+        Truck toyota = new Truck("Тойота", "г204", 4.5, true);
 
         var ikarus = new Bus("Икарус", "111", 2.5);
         var liaz = new Bus("Лиаз", "222", 2);
@@ -29,14 +29,14 @@ public class Main {
         DriverB alex = new DriverB('B', "Alex", true, 15, audi);
         DriverB igor = new DriverB('B', "Igor", true, 20, mersedes);
         DriverB andrey = new DriverB('B', "Andrey", true, 12, lamborgini);
-        DriverC peter = new DriverC("Peter", 'C', true, 5,maz);
-        DriverC vasya = new DriverC("Vasiliy", 'C', true, 5,kamaz);
-        DriverC dima = new DriverC("Dmitriy", 'C', true, 7,volvo);
-        DriverC serg = new DriverC("Sergey", 'C', true, 9,toyota);
-        DriverD semen = new DriverD('D', true, "Semyon",7,liaz);
-        DriverD zhenya = new DriverD('D', true, "Evgeny",25,ikarus);
-        DriverD max = new DriverD('D', true, "Max",11,mersBus);
-        DriverD kostya = new DriverD('D', true, "Konstantin",7,mersBus2);
+        DriverC peter = new DriverC("Peter", 'C', true, 5, maz);
+        DriverC vasya = new DriverC("Vasiliy", 'C', true, 5, kamaz);
+        DriverC dima = new DriverC("Dmitriy", 'C', true, 7, volvo);
+        DriverC serg = new DriverC("Sergey", 'C', true, 9, toyota);
+        DriverD semen = new DriverD('D', true, "Semyon", 7, liaz);
+        DriverD zhenya = new DriverD('D', true, "Evgeny", 25, ikarus);
+        DriverD max = new DriverD('D', true, "Max", 11, mersBus);
+        DriverD kostya = new DriverD('D', true, "Konstantin", 7, mersBus2);
 
 
         System.out.println();
@@ -102,8 +102,6 @@ public class Main {
         }
 
 
-
-
         Mechanic<Car> den = new Mechanic<>("Den", "Service company two", "Cars");
         Mechanic<Transport> bob = new Mechanic<>("Bob", "Service company one", "All");
         Mechanic<Truck> mask = new Mechanic<>("Mask", "Service company three", "Trucks");
@@ -113,7 +111,6 @@ public class Main {
         Sponsor sponsor2 = new Sponsor("Sponsor two", 2_000_000);
         Sponsor sponsor3 = new Sponsor("Sponsor three", 3_000_000);
         Sponsor sponsor4 = new Sponsor("Sponsor four", 4_000_000);
-
 
 
         mersedes.getSponsors().add(sponsor1);
@@ -176,9 +173,19 @@ public class Main {
         mersBus2.getMechanics().add(henry);
         mersBus2.getDrivers().add(kostya);
 
-//        System.out.println(mersedes.getSponsors());
-//        System.out.println(mersedes.getDrivers());
-//        System.out.println(mersedes.getMechanics());
+        System.out.printf("\nТранспорт %s %s:", mersBus2.getBrand(), mersBus2.getModel());
+
+        for (int i = 0; i < mersBus2.getSponsors().size(); i++) {
+            System.out.print("\nСпонсор " + (i + 1) + " - " + mersBus2.getSponsors().get(i).getSponsorName());
+        }
+
+        for (int i = 0; i < mersBus2.getDrivers().size(); i++) {
+            System.out.print("\nВодитель " + (i + 1) + " - " + mersBus2.getDrivers().get(i).getDriverName());
+        }
+
+        for (int i = 0; i < mersBus2.getMechanics().size(); i++) {
+            System.out.print("\nМеханик " + (i + 1) + " - " + mersBus2.getMechanics().get(i).getMechanicName());
+        }
 
 
 //        bob.getTransportsInService().add(ikarus);
