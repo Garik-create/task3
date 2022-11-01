@@ -187,6 +187,13 @@ public class Main {
             System.out.print("\nМеханик " + (i + 1) + " - " + mersBus2.getMechanics().get(i).getMechanicName());
         }
 
+        AutoService<Transport> transportAutoService = new AutoService<>();
+        transportAutoService.addAuto(mersedes);
+        transportAutoService.addAuto(maz);
+        transportAutoService.addAuto(kamaz);
+
+        transportAutoService.doService();
+
 
 //        bob.getTransportsInService().add(ikarus);
 //        bob.getTransportsInService().add(mersedes);
