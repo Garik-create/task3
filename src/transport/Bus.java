@@ -92,6 +92,8 @@ public class Bus extends Transport implements Competing{
         System.out.println("Засеки время прохожднения каждого круга.");
         System.out.println("Определи максимальную скорость на круге.");
     }
+
+
 }
 
 

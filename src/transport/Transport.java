@@ -1,7 +1,9 @@
 package transport;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public abstract class Transport {
     private final String brand;
@@ -10,10 +12,10 @@ public abstract class Transport {
 
     //    private ArrayList<Transport> transportsInService;
 
-    private List<Sponsor> sponsors = new ArrayList<>();
+    private Set<Sponsor> sponsors = new HashSet<>();
 
-    private List<Driver<?>> drivers = new ArrayList<>();
-    private List<Mechanic<?>> mechanics = new ArrayList<>();
+    private Set<Driver<?>> drivers = new HashSet<>();
+    private Set<Mechanic<?>> mechanics = new HashSet<>();
 
 //    private final int productionYear;
 //    private final String productionCountry;
@@ -41,9 +43,9 @@ public abstract class Transport {
         }
         setEngineVolume(engineVolume);
 
-        sponsors = new ArrayList<>();
+//        sponsors = new ArrayList<>();
 
-        mechanics = new ArrayList<>();
+//        mechanics = new HashSet<>();
 
 //        if (productionYear != 0) {
 //            this.productionYear = productionYear;
@@ -67,19 +69,24 @@ public abstract class Transport {
         this.mechanics.add(mechanic);
     }
     public void addSponsor(Sponsor sponsor) {
-        this.sponsors.add(sponsor);
+        if (!this.sponsors.add(sponsor)) {
+            this.sponsors.add(sponsor);
+        } else {
+            throw new RuntimeException("Этот спонсор уже есть в списке");
+        }
     }
 
 
-    public List<Sponsor> getSponsors() {
+
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 
-    public List<Driver<?>> getDrivers() {
+    public Set<Driver<?>> getDrivers() {
         return drivers;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 

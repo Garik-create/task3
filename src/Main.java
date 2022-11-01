@@ -1,9 +1,6 @@
 import transport.*;
 
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 //import transport.Train;
 
 
@@ -82,8 +79,9 @@ public class Main {
         semen.getMessage();
         System.out.println();
 
-        List<Transport> competitors = new ArrayList<>();
+        Set<Transport> competitors = new HashSet<>();
 
+        competitors.add(mersedes);
         competitors.add(mersedes);
         competitors.add(bmw);
         competitors.add(audi);
@@ -171,21 +169,24 @@ public class Main {
         mersBus2.getSponsors().add(sponsor4);
         mersBus2.getMechanics().add(bob);
         mersBus2.getMechanics().add(henry);
-        mersBus2.getDrivers().add(kostya);
+        if (mersBus2.getDrivers().add(kostya)) {
+            mersBus2.getDrivers().add(kostya) ;
+        } else {
+            System.out.println("Такой водитель уже есть.");
+        }
+
 
         System.out.printf("\nТранспорт %s %s:", mersBus2.getBrand(), mersBus2.getModel());
 
         for (int i = 0; i < mersBus2.getSponsors().size(); i++) {
-            System.out.print("\nСпонсор " + (i + 1) + " - " + mersBus2.getSponsors().get(i).getSponsorName());
+            System.out.print("\nСпонсор " + (i + 1) + " - " + mersBus2.getSponsors());
         }
 
         for (int i = 0; i < mersBus2.getDrivers().size(); i++) {
-            System.out.print("\nВодитель " + (i + 1) + " - " + mersBus2.getDrivers().get(i).getDriverName());
+            System.out.print("\nВодитель " + (i + 1) + " - " + mersBus2.getDrivers());
         }
 
-        for (int i = 0; i < mersBus2.getMechanics().size(); i++) {
-            System.out.print("\nМеханик " + (i + 1) + " - " + mersBus2.getMechanics().get(i).getMechanicName());
-        }
+            System.out.print("\nМеханики - " + mersBus2.getMechanics());
 
         AutoService<Transport> transportAutoService = new AutoService<>();
         transportAutoService.addAuto(mersedes);
