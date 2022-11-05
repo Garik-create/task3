@@ -23,13 +23,14 @@ public class Main {
                 "Sidorovich",
                 LocalDate.of(1990,10,29));
 
-        Passport.addPassport(passport1, Passport.getPassports());
-        Passport.addPassport(passport2, Passport.getPassports());
-        Passport.addPassport(passport3, Passport.getPassports());
+        Passport.addPassport(passport1);
+        Passport.addPassport(passport2);
+        Passport.addPassport(passport3);
+
 
         System.out.println(Passport.getPassports());
 
-        String passportToFind = "222223";
+        String passportToFind = "222222";
 
             Passport.findPassport(passportToFind, Passport.getPassports());
     }

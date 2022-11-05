@@ -1,9 +1,9 @@
 package passport;
 
+import jdk.dynalink.support.SimpleRelinkableCallSite;
+
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Passport {
     private String passportNumber;
@@ -12,7 +12,7 @@ public class Passport {
     private String patronymic;
     private LocalDate dateOfBirth;
 
-    private static Set<Passport> passports;
+    private static Map<String, Passport> passports;
 
 
     public Passport(String passportNumber, String lastName, String firstName, LocalDate dateOfBirth) {
@@ -34,41 +34,42 @@ public class Passport {
         setFirstName(firstName);
         setPatronymic(patronymic);
         setDateOfBirth(dateOfBirth);
-        passports = new HashSet<>();
+        passports = new HashMap<>();
     }
 
 
-    public static void findPassport(String number, Set<Passport> passports) {
-        for (Passport value : passports) {
-            if (value.getPassportNumber().equals(number)) {
-                System.out.printf("Пасспорт с номером " + number + " найден: \n" + value);
-                return;
-            }
-
+    public static void findPassport(String number, Map<String, Passport> passports) {
+        if (passports.containsKey(number)) {
+            System.out.printf("Пасспорт с номером " + number + " найден: \n" + passports.get(number));
+            return;
         }
         System.out.println("null");
     }
 
-    public static void addPassport(Passport passport, Set<Passport> passports) {
-        if (passports.isEmpty()) {
-            passports.add(passport);
-        } else if (passports.contains(passport)) {
-            for (Passport value : passports) {
-                if (value.getPassportNumber().equals(passport.getPassportNumber())) {
-                    passports.remove(passport);
-                    passports.add(passport);
-                    return;
-                }
-            }
-        } else {
-            passports.add(passport);
-        }
-
-
+    public static void addPassport(Passport passport) {
+        passports.put(passport.getPassportNumber(),passport);
     }
 
+//    public static void addPassport(String number, Map<String, Passport> passports) {
+//        if (passports.isEmpty()) {
+//            passports.put(number,passports.);
+//        } else if (passports.contains(passport)) {
+//            for (Passport value : passports) {
+//                if (value.getPassportNumber().equals(passport.getPassportNumber())) {
+//                    passports.remove(passport);
+//                    passports.add(passport);
+//                    return;
+//                }
+//            }
+//        } else {
+//            passports.add(passport);
+//        }
+//
+//
+//    }
 
-    public static Set<Passport> getPassports() {
+
+    public static Map<String, Passport> getPassports() {
         return passports;
     }
 
@@ -96,10 +97,6 @@ public class Passport {
     public String getPassportNumber() {
         return passportNumber;
     }
-
-  /*  public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
-    }*/
 
     public String getLastName() {
         return lastName;
@@ -144,9 +141,5 @@ public class Passport {
         } else {
             System.out.println("Введите корректную дату рождения!");
         }
-    }
-
-    public static void setPassport(Passport passport) {
-        passports.add(passport);
     }
 }
