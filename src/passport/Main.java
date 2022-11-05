@@ -19,12 +19,9 @@ public class Main {
 
         Passport passport3 = new Passport("222223",
                 "Sidorov",
-                "Sidor",
+                "Sidr",
                 "Sidorovich",
                 LocalDate.of(1990,10,29));
-
-
-
 
         Passport.addPassport(passport1, Passport.getPassports());
         Passport.addPassport(passport2, Passport.getPassports());
@@ -32,6 +29,8 @@ public class Main {
 
         System.out.println(Passport.getPassports());
 
-    }
+        String passportToFind = "222223";
 
+            Passport.findPassport(passportToFind, Passport.getPassports());
+    }
 }

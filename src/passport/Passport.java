@@ -38,40 +38,59 @@ public class Passport {
     }
 
 
-
-
-    public static void addPassport(Passport passport, Set<Passport> passports) {
-        if (passports.size() == 0) {
-            passports.add(passport);
-        } else {
-//            List<>
-            for (Passport value : passports) {
-                if (value.getPassportNumber().equals(passport.getPassportNumber())) {
-                value.setLastName(passport.getLastName());
-                value.setFirstName(passport.getFirstName());
-                value.setPatronymic(passport.getPatronymic());
-                value.setDateOfBirth(passport.getDateOfBirth());
-                passports.add(passport);
-                } else {
-                passports.add(passport);
-            }
+    public static void findPassport(String number, Set<Passport> passports) {
+        for (Passport value : passports) {
+            if (value.getPassportNumber().equals(number)) {
+                System.out.printf("Пасспорт с номером " + number + " найден: \n" + value);
+                return;
             }
 
         }
+        System.out.println("null");
+    }
+
+    public static void addPassport(Passport passport, Set<Passport> passports) {
+        if (passports.isEmpty()) {
+            passports.add(passport);
+        } else if (passports.contains(passport)) {
+            for (Passport value : passports) {
+                if (value.getPassportNumber().equals(passport.getPassportNumber())) {
+                    passports.remove(passport);
+                    passports.add(passport);
+                    return;
+                }
+            }
+        } else {
+            passports.add(passport);
+        }
+
 
     }
+
 
     public static Set<Passport> getPassports() {
         return passports;
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Passport passport = (Passport) o;
+        return getPassportNumber().equals(passport.getPassportNumber());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPassportNumber());
+    }
+
+    @Override
     public String toString() {
         return "Пасспорт номер " + passportNumber + ", Фамилия " + lastName +
                 ", Имя " + firstName + ", отчество " + patronymic +
-                ", дата рождения: " + dateOfBirth+";\n";
+                ", дата рождения: " + dateOfBirth + ";\n";
     }
-
 
 
     public String getPassportNumber() {
